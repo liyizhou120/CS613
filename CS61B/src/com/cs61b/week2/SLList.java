@@ -123,7 +123,7 @@ public class SLList <Item> implements Inheritance<Item>{
 	
 	@Override
 	public void print() {
-		System.out.println("boss does not know what he is doing");
+//		System.out.println("boss does not know what he is doing");
 		for(IntNode p = sentinel.next; p != null; p = p.next) {
 			System.out.print(p.item + " ");
 		}
