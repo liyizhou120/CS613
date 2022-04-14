@@ -3,7 +3,7 @@ package com.cs61b.week2;
 public class VengefulSLList<Item> extends SLList<Item> {
 
 	SLList<Item> deletedItems = new SLList<Item>();
-	
+	/* A constructor will also work*/
 //	public VengefulSLList() {
 //		deletedItems = new SLList<Item>();
 //	}
