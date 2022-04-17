@@ -1,6 +1,6 @@
 package com.cs61b.week3;
 
-public class Dog implements OurComparable{
+public class Dog implements Comparable<Dog>{
 	public String name;
     private int size;
 
@@ -9,10 +9,9 @@ public class Dog implements OurComparable{
         size = s;
     }
 
-    public int compareTo(Object o) {
+    public int compareTo(Dog biubiu) {
         //assume nobody is messing up and giving us
         //something that isn't a dog.
-    	Dog biubiu = (Dog) o;
         return size - biubiu.size;
     }
 

@@ -1,7 +1,7 @@
 package com.cs61b.week3;
 
 public class Maximizer {
-	public static OurComparable max(OurComparable[] item) {
+	public static Comparable max(Comparable[] item) {
 		int maxDex = 0; 
 		for(int i = 0; i < item.length; i+= 1) {
 			int cmp = item[i].compareTo(item[maxDex]);
