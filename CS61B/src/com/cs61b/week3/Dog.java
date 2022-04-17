@@ -1,4 +1,5 @@
 package com.cs61b.week3;
+import java.util.Comparator;
 
 public class Dog implements Comparable<Dog>{
 	public String name;
@@ -18,5 +19,15 @@ public class Dog implements Comparable<Dog>{
 
     public void bark() {
         System.out.println(name + " says: bark");
+    }
+    
+    private static class NameComparator implements Comparator<Dog>{
+    	public int compare(Dog dog1, Dog dog2) {
+    		return dog1.name.compareTo(dog2.name);
+    	}
+    }
+    
+    public static Comparator<Dog> getNameComparator(){
+    	return new NameComparator();
     }
 }

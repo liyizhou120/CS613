@@ -1,4 +1,5 @@
 package com.cs61b.week3;
+import java.util.Comparator;
 
 public class Maximizer {
 	public static Comparable max(Comparable[] item) {
@@ -20,5 +21,12 @@ public class Maximizer {
 
         Dog d = (Dog) max(dogs);
         d.bark();
+        
+        Comparator<Dog> nc =  Dog.getNameComparator();
+        if (nc.compare(d1, d3) > 0) { //if d1 comes later than d3 in the alphabet
+        	d1.bark(); 
+        }else {
+        	d3.bark();
+        }
 	}
 }
