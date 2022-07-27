@@ -5,7 +5,5 @@ import java.util.PriorityQueue;
 public class PrimAlgo {
 	
 	
-	PriorityQueue<String> pq = new PriorityQueue<>();
-	
 	
 }
