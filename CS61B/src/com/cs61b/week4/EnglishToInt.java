@@ -27,11 +27,24 @@ public class EnglishToInt {
 		return letterToIntSum;
 	}
 	
+	public static int asciiToInt (String s) {
+		int intRep = 0; 
+		for(int i = 0; i < s.length(); i++) {
+			intRep = intRep * 126; 
+			intRep = intRep + s.charAt(i);
+		}
+		return intRep; 
+	}
+	
+	
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String str = "rinima";
 		int i = englishToInt(str);
 		System.out.println(i);
+		
 	}
 
 }
