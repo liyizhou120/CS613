@@ -126,7 +126,7 @@ public class MaxPQ<Key> implements Iterable <Key>  {
 	 * @throws NoSuchElementException if this priority queue is empty
 	 */
 	
-	public Key pop() {
+	public Key removeMax() {
 		if(isEmpty()) {
 			throw new NoSuchElementException("Priority queue is empty");
 		}
@@ -274,7 +274,7 @@ public class MaxPQ<Key> implements Iterable <Key>  {
 			if(!hasNext()) {
 				throw new NoSuchElementException();
 			}
-			return copy.pop();
+			return copy.removeMax();
 		}
 	}
 	
