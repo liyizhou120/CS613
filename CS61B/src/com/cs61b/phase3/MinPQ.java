@@ -1,6 +1,7 @@
 package com.cs61b.phase3;
 
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class MinPQ<Key> implements Iterable<Key> {
@@ -99,13 +100,6 @@ public class MinPQ<Key> implements Iterable<Key> {
 	}
 	
 	
-	private void swap(int i, int j) {
-        Key temp = pq[i];
-        pq[i] = pq[j];
-        pq[j] = temp;
-    }
-	
-	
 	public int size() {
 		return n; 
 	}
@@ -147,9 +141,14 @@ public class MinPQ<Key> implements Iterable<Key> {
 	
 		Key min = pq[1];
 		swap(1, n--);
+		sink(1);
+		pq[n+1] = null;
 		
+		if((n > 0) && (n == (pq.length - 1)/4)) {
+			resize(pq.length / 2);
+		}
 		
-		
+		assert isMinHeap(); 		
 		return min; 
 	}
 	
@@ -164,6 +163,11 @@ public class MinPQ<Key> implements Iterable<Key> {
 		}
 	}
 	
+	private void swap(int i, int j) {
+        Key temp = pq[i];
+        pq[i] = pq[j];
+        pq[j] = temp;
+    }
 	
 	
 	
@@ -202,4 +206,44 @@ public class MinPQ<Key> implements Iterable<Key> {
 		return isMinHeapOrdered(left) && isMinHeapOrdered(right);
 		
 	}
+	
+	public Iterator<Key> iterator(){
+		return new HeapIterator();
+	}
+	
+	public class HeapIterator implements Iterator<Key>{
+		//create a new pq
+		private MinPQ<Key> copy; 
+		
+		//add all items to copy of heap 
+		//takes linear time since already in heap order so no keys move
+		public HeapIterator() {
+			if(comparator == null) {
+				copy = new MinPQ<Key>(size());
+			}else {
+				copy = new MinPQ<Key>(size(), comparator);
+			}
+			
+			for(int i = 1; i <= n; i++) {
+				copy.insert(pq[i]);
+			}
+		}
+		
+		public boolean hasNext() {
+			return !copy.isEmpty();
+		}
+		
+		public void remove() {
+			throw new UnsupportedOperationException();
+		}
+		
+		public Key next() {
+			if(!hasNext()) {
+				throw new NoSuchElementException();
+			}
+			return copy.delMin();
+		}
+		
+	}
+	
 }
